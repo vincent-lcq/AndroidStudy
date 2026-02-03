@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,9 +10,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Java">
+        android:theme="@style/Theme.Notebook">
         <activity
-            android:name=".SqliteActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,45 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".DataStorageDemo"
-            android:exported="true" />
-        <activity
-            android:name=".ui.component.TabsActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ActivityC"
-            android:exported="false" />
-        <activity
-            android:name=".ActivityB"
-            android:exported="true" />
-        <activity
-            android:name=".ui.component.RecylerViewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.component.ListViewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.component.ToastDemoActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.component.CheckboxActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.component.RadioButtonActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.component.EditTextDemoActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.component.SingleChoiceDialogActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.component.AlertDialogActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
     </application>
 
 </manifest>

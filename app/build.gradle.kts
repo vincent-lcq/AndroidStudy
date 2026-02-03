@@ -3,13 +3,13 @@ plugins {
 }
 
 android {
-    namespace = "com.vincent.java"
+    namespace = "com.vincent.notebook"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.vincent.java"
+        applicationId = "com.vincent.notebook"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -30,10 +30,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
-    }
-
-    buildFeatures {
-        viewBinding = true
     }
 }
 
