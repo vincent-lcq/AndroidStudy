@@ -16,6 +16,8 @@ import com.vincent.notebook.databinding.ActivityEditBinding;
 import com.vincent.notebook.db.MyDbHelper;
 import com.vincent.notebook.utils.TimeUtil;
 
+import java.io.Serializable;
+
 import es.dmoral.toasty.Toasty;
 
 public class EditActivity extends AppCompatActivity {
@@ -25,6 +27,8 @@ public class EditActivity extends AppCompatActivity {
     private MyDbHelper myDebHelper;
 
     private TimeUtil timeUtil;
+
+    private Notepad notepad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,14 @@ public class EditActivity extends AppCompatActivity {
             return insets;
         });
         myDebHelper = new MyDbHelper(this);
-        binding.titleTv.setText("添加记录");
+        Serializable serializable = getIntent().getSerializableExtra("notepad");
+        if (serializable == null) {
+            binding.titleTv.setText("添加记录");
+        } else {
+            binding.titleTv.setText("修改记录");
+            notepad = (Notepad) serializable;
+            binding.contentEt.setText(notepad.getContent());
+        }
         binding.backIv.setOnClickListener(view -> finish());
         binding.clearIv.setOnClickListener(view ->  binding.contentEt.setText(""));
 
@@ -48,12 +59,21 @@ public class EditActivity extends AppCompatActivity {
                 Toasty.warning(this,"请输入内容", Toast.LENGTH_SHORT, true).show();
                 return;
             }
-            Notepad notepad = new Notepad();
-            notepad.setContent(content);
-            notepad.setTime(timeUtil.getTime());
 
-            myDebHelper.insert(notepad);
-            Toasty.success(this, "创建成功", Toast.LENGTH_LONG,true).show();
+            // 判断新增还是修改
+            if (notepad == null) {
+                notepad = new Notepad();
+                notepad.setContent(content);
+                notepad.setTime(TimeUtil.getTime());
+                myDebHelper.insert(notepad);
+                Toasty.success(this, "创建成功", Toast.LENGTH_LONG,true).show();
+            } else {
+                notepad.setContent(content);
+                notepad.setTime(TimeUtil.getTime());
+                myDebHelper.update(notepad);
+                Toasty.success(this, "操作成功", Toast.LENGTH_LONG,true).show();
+            }
+            setResult(RESULT_OK);
             finish();
         });
     }

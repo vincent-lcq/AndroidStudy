@@ -12,6 +12,8 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#333333"
+        android:maxLines="2"
+        android:ellipsize="end"
         tools:text="这是标题"/>
 
     <TextView
@@ -19,7 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        android:textStyle="bold"
         android:textColor="#666666"
         tools:text="2025:17:48:22"/>
 </LinearLayout>
